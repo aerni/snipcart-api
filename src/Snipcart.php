@@ -116,6 +116,7 @@ class Snipcart
     /**
      * Get, post or put a Snipcart product.
      *
+     * @param string $id
      * @return PendingRequest
      */
     public function product(string $id): PendingRequest
@@ -182,5 +183,103 @@ class Snipcart
         $endpoint = '/products/'.$id;
 
         return new PendingRequest($method, $endpoint);
+    }
+
+    /**
+     * Get Snipcart orders.
+     *
+     * @return PendingRequest
+     */
+    public function orders(): PendingRequest
+    {
+        if ($this->method === 'get') {
+            return $this->getOrders();
+        }
+
+        // if ($this->method === 'put') {
+        //     return $this->postProducts($url);
+        // }
+
+        throw new MethodChainingException($this->method, 'orders');
+    }
+
+    /**
+     * Get all Snipcart orders.
+     *
+     * @return PendingRequest
+     */
+    protected function getOrders(): PendingRequest
+    {
+        $method = 'get';
+        $endpoint = '/orders/';
+
+        $acceptedParameters = [
+            'limit' => null,
+            'offset' => null,
+            'status' => null,
+            'invoiceNumber' => null,
+            'productId' => null,
+            'placedBy' => null,
+            'from' => null,
+            'to' => null,
+            'isRecurringOrder' => null,
+        ];
+
+        return new PendingRequest($method, $endpoint, $acceptedParameters);
+    }
+
+    /**
+     * Get, post or put a Snipcart order.
+     *
+     * @param string $token
+     * @return PendingRequest
+     */
+    public function order(string $token): PendingRequest
+    {
+        if ($this->method === 'get') {
+            return $this->getOrder($token);
+        }
+
+        if ($this->method === 'put') {
+            return $this->putOrder($token);
+        }
+
+        throw new MethodChainingException($this->method, 'order');
+    }
+
+    /**
+     * Get a Snipcart order by its token.
+     *
+     * @param string $token
+     * @return PendingRequest
+     */
+    protected function getOrder(string $token): PendingRequest
+    {
+        $method = 'get';
+        $endpoint = '/orders/'.$token;
+
+        return new PendingRequest($method, $endpoint);
+    }
+
+    /**
+     * Update a Snipcart order by its token.
+     *
+     * @param string $token
+     * @return PendingRequest
+     */
+    protected function putOrder(string $token): PendingRequest
+    {
+        $method = 'put';
+        $endpoint = '/orders/'.$token;
+
+        $acceptedParameters = [
+            'status' => null,
+            'paymentStatus' => null,
+            'trackingNumber' => null,
+            'trackingUrl' => null,
+            'metadata' => null,
+        ];
+
+        return new PendingRequest($method, $endpoint, $acceptedParameters);
     }
 }

@@ -55,9 +55,23 @@ class PendingRequest
      * @return $this
      * @throws Exceptions\ValidatorException
      */
-    public function id(string $id): self
+    public function userDefinedId(string $id): self
     {
         $this->setRequestedParameter('userDefinedId', $id);
+
+        return $this;
+    }
+
+    /**
+     * The product ID defined by the user.
+     *
+     * @param string $id
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function productId(string $id): self
+    {
+        $this->setRequestedParameter('productId', $id);
 
         return $this;
     }
@@ -145,6 +159,121 @@ class PendingRequest
     public function stock(int $stock): self
     {
         $this->setRequestedParameter('stock', $stock);
+
+        return $this;
+    }
+
+    /**
+     * A status criteria for your order collection. 
+     * Possible values: InProgress, Processed, Disputed, Shipped, Delivered, Pending, Cancelled
+     *
+     * @param string $status
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function status(string $status): self
+    {
+        $this->setRequestedParameter('status', $status);
+
+        return $this;
+    }
+
+    /**
+     * The order payment status. 
+     * Possible values: Paid, Deferred, PaidDeferred, ChargedBack, Refunded, Paidout, 
+     * Failed, Pending, Expired, Cancelled, Open, Authorized.
+     *
+     * @param string $status
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function paymentStatus(string $status): self
+    {
+        $this->setRequestedParameter('paymentStatus', $status);
+
+        return $this;
+    }
+
+    /**
+     * The invoice number of the order to retrieve.
+     *
+     * @param string $invoice
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function invoice(string $invoice): self
+    {
+        $this->setRequestedParameter('invoiceNumber', $invoice);
+
+        return $this;
+    }
+
+    /**
+     * The name of the person who made the purchase.
+     *
+     * @param string $name
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function by(string $name): self
+    {
+        $this->setRequestedParameter('placedBy', $name);
+
+        return $this;
+    }
+
+    /**
+     * Returns only the orders that are recurring or not.
+     *
+     * @param bool $bool
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function recurring(bool $bool): self
+    {
+        $this->setRequestedParameter('isRecurringOrder', $bool);
+
+        return $this;
+    }
+
+    /**
+     * The tracking number associated to the order.
+     *
+     * @param string $number
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function trackingNumber(string $number): self
+    {
+        $this->setRequestedParameter('trackingNumber', $number);
+
+        return $this;
+    }
+
+    /**
+     * The URL where the customer will be able to track its order.
+     *
+     * @param string $url
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function trackingUrl(string $url): self
+    {
+        $this->setRequestedParameter('trackingUrl', $url);
+
+        return $this;
+    }
+
+    /**
+     * A simple array that can hold any data associated to this order.
+     *
+     * @param array $metadata
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function metadata(array $metadata): self
+    {
+        $this->setRequestedParameter('metadata', $metadata);
 
         return $this;
     }
