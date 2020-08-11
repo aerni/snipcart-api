@@ -4,10 +4,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication
+    | Snipcart API Keys
     |--------------------------------------------------------------------------
     |
-    | Your secret Snipcart API Keys.
+    | Your secret Snipcart API Keys for the Live and Test Environment.
     |
     */
 

@@ -17,10 +17,10 @@ class SnipcartApiServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__.'/../../config/laravel-snipcart.php', 'laravel-snipcart');
+        $this->mergeConfigFrom(__DIR__.'/../../config/snipcart-api.php', 'snipcart-api');
 
         $this->publishes([
-            __DIR__.'/../../config/laravel-snipcart.php' => config_path('laravel-snipcart.php'),
+            __DIR__.'/../../config/snipcart-api.php' => config_path('snipcart-api.php'),
         ]);
     }
 
@@ -31,11 +31,11 @@ class SnipcartApiServiceProvider extends ServiceProvider
      */
     protected function apiKey()
     {
-        $mode = config('laravel-snipcart.test_mode');
+        $mode = config('snipcart-api.test_mode');
         
         $apiKey = $mode
-            ? config('laravel-snipcart.test_secret')
-            : config('laravel-snipcart.live_secret');
+            ? config('snipcart-api.test_secret')
+            : config('snipcart-api.live_secret');
 
         if (! $apiKey) {
             throw new ApiKeyNotFoundException($mode);
