@@ -1,0 +1,51 @@
+{
+	"name": "aerni/snipcart-api",
+	"description": "A Laravel wrapper for the Snipcart API",
+	"keywords": [
+		"laravel",
+		"snipcart",
+		"snipcart-api",
+		"wrapper",
+		"api",
+		"e-commerce",
+		"shop"
+	],
+	"homepage": "https://github.com/aerni/snipcart-api",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Michael Aerni",
+			"email": "hello@michaelaerni.ch",
+			"homepage": "https://www.michaelaerni.ch",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": "7.2.* || 7.3.* || 7.4.*",
+		"guzzlehttp/guzzle": "^6.5",
+		"illuminate/support": "^7.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Aerni\\SnipcartApi\\": "src"
+		}
+	},
+	"scripts": {
+		"test": "vendor/bin/phpunit"
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Aerni\\SnipcartApi\\Providers\\SnipcartApiServiceProvider"
+			],
+			"aliases": {
+				"Snipcart": "Aerni\\SnipcartApi\\Facades\\SnipcartFacade"
+			}
+		}
+	},
+	"config": {
+		"sort-packages": true
+	},
+	"prefer-stable": true,
+	"minimum-stability": "dev"
+}
