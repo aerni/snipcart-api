@@ -152,14 +152,14 @@ class PendingRequest
     }
 
     /**
-     * Execute the request. This is the final method and has to be called at the end of the method chain.
+     * send the request. This is the final method and has to be called at the end of the method chain.
      *
      * @return array
      * @throws Exceptions\SnipcartApiException
      */
-    public function execute(): array
+    public function send(): array
     {
-        return resolve(CreateRequestAction::class)->execute($this);
+        return resolve(CreateRequestAction::class)->send($this);
     }
 
     /**

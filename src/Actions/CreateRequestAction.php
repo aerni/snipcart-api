@@ -10,13 +10,13 @@ use Illuminate\Support\Collection;
 class CreateRequestAction
 {
     /**
-     * Execute the pending request and return the response from the Snipcart API.
+     * Send the pending request and return the response from the Snipcart API.
      *
      * @param PendingRequest $pendingRequest
      * @return array
      * @throws SnipcartApiException
      */
-    public function execute(PendingRequest $pendingRequest): array
+    public function send(PendingRequest $pendingRequest): array
     {
         $method = $pendingRequest->method;
         $endpoint = $pendingRequest->endpoint;
