@@ -87,6 +87,7 @@ class Snipcart
         $acceptedParameters = [
             'limit' => null,
             'offset' => null,
+            'userDefinedId' => null,
             'from' => null,
             'to' => null
         ];

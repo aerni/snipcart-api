@@ -47,6 +47,20 @@ class PendingRequest
 
         return $this;
     }
+    
+    /**
+     * The product ID defined by the user.
+     *
+     * @param string $id
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function id(string $id): self
+    {
+        $this->setRequestedParameter('userDefinedId', $id);
+
+        return $this;
+    }
 
     /**
      * Filter products to return those that have been bought from specified date.
