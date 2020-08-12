@@ -37,10 +37,7 @@
 		"laravel": {
 			"providers": [
 				"Aerni\\SnipcartApi\\Providers\\SnipcartApiServiceProvider"
-			],
-			"aliases": {
-				"Snipcart": "Aerni\\SnipcartApi\\Facades\\SnipcartFacade"
-			}
+			]
 		}
 	},
 	"config": {

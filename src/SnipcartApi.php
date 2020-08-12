@@ -4,7 +4,7 @@ namespace Aerni\SnipcartApi;
 
 use Aerni\SnipcartApi\Exceptions\MethodChainingException;
 
-class Snipcart
+class SnipcartApi
 {
     protected $method;
 

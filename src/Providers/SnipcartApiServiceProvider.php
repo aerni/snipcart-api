@@ -4,6 +4,7 @@ namespace Aerni\SnipcartApi\Providers;
 
 use Aerni\SnipcartApi\Exceptions\ApiKeyNotFoundException;
 use Aerni\SnipcartApi\Request;
+use Aerni\SnipcartApi\SnipcartApi;
 use Illuminate\Support\ServiceProvider;
 
 class SnipcartApiServiceProvider extends ServiceProvider
@@ -13,6 +14,8 @@ class SnipcartApiServiceProvider extends ServiceProvider
         $this->app->bind(Request::class, function () {
             return new Request($this->apiKey());
         });
+
+        $this->app->bind('SnipcartApi', SnipcartApi::class);
     }
 
     public function boot()
