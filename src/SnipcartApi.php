@@ -89,7 +89,7 @@ class SnipcartApi
             'offset' => null,
             'userDefinedId' => null,
             'from' => null,
-            'to' => null
+            'to' => null,
         ];
 
         return new PendingRequest($method, $endpoint, $acceptedParameters);

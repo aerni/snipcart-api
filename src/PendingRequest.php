@@ -119,8 +119,8 @@ class PendingRequest
     }
 
     /**
-     * Specifies how inventory should be tracked for this product. 
-     * Can be "Single" or "Variant". 
+     * Specifies how inventory should be tracked for this product.
+     * Can be "Single" or "Variant".
      * Variant can be used when a product has some dropdown custom fields.
      *
      * @param string $method
@@ -149,7 +149,7 @@ class PendingRequest
     }
 
     /**
-     * The number of items in stock. 
+     * The number of items in stock.
      * Will be used when "inventoryManagementMethod" is "Single".
      *
      * @param int $stock
@@ -164,7 +164,7 @@ class PendingRequest
     }
 
     /**
-     * A status criteria for your order collection. 
+     * A status criteria for your order collection.
      * Possible values: InProgress, Processed, Disputed, Shipped, Delivered, Pending, Cancelled
      *
      * @param string $status
@@ -179,8 +179,8 @@ class PendingRequest
     }
 
     /**
-     * The order payment status. 
-     * Possible values: Paid, Deferred, PaidDeferred, ChargedBack, Refunded, Paidout, 
+     * The order payment status.
+     * Possible values: Paid, Deferred, PaidDeferred, ChargedBack, Refunded, Paidout,
      * Failed, Pending, Expired, Cancelled, Open, Authorized.
      *
      * @param string $status
@@ -279,8 +279,8 @@ class PendingRequest
     }
     
     /**
-     * If true a customer will be able to buy the product even if it's out of stock. 
-     * The stock level might be negative. 
+     * If true a customer will be able to buy the product even if it's out of stock.
+     * The stock level might be negative.
      * If false it will be impossible to buy the product.
      *
      * @param bool $bool

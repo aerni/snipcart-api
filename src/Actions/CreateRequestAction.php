@@ -3,8 +3,8 @@
 namespace Aerni\SnipcartApi\Actions;
 
 use Aerni\SnipcartApi\Exceptions\SnipcartApiException;
-use Aerni\SnipcartApi\Request;
 use Aerni\SnipcartApi\PendingRequest;
+use Aerni\SnipcartApi\Request;
 use Illuminate\Support\Collection;
 
 class CreateRequestAction

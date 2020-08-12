@@ -37,6 +37,7 @@ class Validator
             return Normalizer::normalizeArgument($requestedParameter);
         } else {
             $acceptedParameter = collect($acceptedParameter)->keys()->implode(', ');
+
             throw new ValidatorException("The parameter [{$requestedParameter}] can’t be used with this endpoint. Accepted parameters: [{$acceptedParameter}].");
         }
     }
