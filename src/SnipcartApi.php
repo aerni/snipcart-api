@@ -16,7 +16,7 @@ class SnipcartApi
     public function get(): self
     {
         $this->method = 'get';
-        
+
         return $this;
     }
 
@@ -28,7 +28,7 @@ class SnipcartApi
     public function post(): self
     {
         $this->method = 'post';
-        
+
         return $this;
     }
 
@@ -40,7 +40,7 @@ class SnipcartApi
     public function put(): self
     {
         $this->method = 'put';
-        
+
         return $this;
     }
 
@@ -52,7 +52,7 @@ class SnipcartApi
     public function delete(): self
     {
         $this->method = 'delete';
-        
+
         return $this;
     }
 
@@ -105,7 +105,7 @@ class SnipcartApi
     {
         $method = 'post';
         $endpoint = '/products/';
-        
+
         $acceptedParameters = [
             'fetchUrl' => $url,
         ];
@@ -160,7 +160,7 @@ class SnipcartApi
     {
         $method = 'put';
         $endpoint = '/products/'.$id;
-        
+
         $acceptedParameters = [
             'inventoryManagementMethod' => null,
             'variants' => null,

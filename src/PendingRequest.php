@@ -47,7 +47,7 @@ class PendingRequest
 
         return $this;
     }
-    
+
     /**
      * The product ID defined by the user.
      *
@@ -156,9 +156,25 @@ class PendingRequest
      * @return $this
      * @throws Exceptions\ValidatorException
      */
-    public function stock(int $stock): self
+    public function stock(int $stock = null): self
     {
         $this->setRequestedParameter('stock', $stock);
+
+        return $this;
+    }
+
+    /**
+     * If true a customer will be able to buy the product even if it's out of stock.
+     * The stock level might be negative.
+     * If false it will be impossible to buy the product.
+     *
+     * @param bool $bool
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function allowOutOfStockPurchases(bool $bool): self
+    {
+        $this->setRequestedParameter('allowOutOfStockPurchases', $bool);
 
         return $this;
     }
@@ -274,22 +290,6 @@ class PendingRequest
     public function metadata(array $metadata): self
     {
         $this->setRequestedParameter('metadata', $metadata);
-
-        return $this;
-    }
-    
-    /**
-     * If true a customer will be able to buy the product even if it's out of stock.
-     * The stock level might be negative.
-     * If false it will be impossible to buy the product.
-     *
-     * @param bool $bool
-     * @return $this
-     * @throws Exceptions\ValidatorException
-     */
-    public function allowOutOfStockPurchases(bool $bool): self
-    {
-        $this->setRequestedParameter('allowOutOfStockPurchases', $bool);
 
         return $this;
     }

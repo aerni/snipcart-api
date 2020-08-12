@@ -37,10 +37,8 @@ class CreateRequestAction
      */
     private function createFinalParameters(Collection $acceptedParameters, Collection $requestedParameters): array
     {
-        $intersectedRequestedParameters = $requestedParameters->intersectByKeys($acceptedParameters);
-
-        return $acceptedParameters->merge($intersectedRequestedParameters)
-            ->filter()
+        return $acceptedParameters->filter()
+            ->merge($requestedParameters)
             ->toArray();
     }
 }
