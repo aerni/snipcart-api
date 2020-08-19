@@ -82,9 +82,9 @@ class Request
                 ->throw()
                 ->json();
         } catch (RequestException $e) {
+            $message = $e->response->json()['message'] ?? $e->getMessage();
+            $status = $e->response->status() ?? $e->getCode();
             $response = $e->response->json();
-            $status = $e->response->status();
-            $message = $e->response->json()['message'];
 
             throw new SnipcartApiException($message, $status, $response);
         }
