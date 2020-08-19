@@ -22,7 +22,6 @@
 	],
 	"require": {
 		"php": "^7.4",
-		"guzzlehttp/guzzle": "^6.5",
 		"illuminate/support": "^7.0"
 	},
 	"autoload": {
