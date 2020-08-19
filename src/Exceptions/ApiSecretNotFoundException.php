@@ -7,7 +7,7 @@ use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
 use Facade\IgnitionContracts\Solution;
 
-class ApiKeyNotFoundException extends Exception implements ProvidesSolution
+class ApiSecretNotFoundException extends Exception implements ProvidesSolution
 {
     protected $mode;
 
