@@ -18,11 +18,11 @@ class CreateRequestAction
      */
     public function send(PendingRequest $pendingRequest): array
     {
-        $method = $pendingRequest->method;
-        $endpoint = $pendingRequest->endpoint;
+        $method = $pendingRequest->method();
+        $endpoint = $pendingRequest->endpoint();
 
-        $acceptedParameters = collect($pendingRequest->acceptedParameters);
-        $requestedParameters = collect($pendingRequest->requestedParameters);
+        $acceptedParameters = collect($pendingRequest->acceptedParameters());
+        $requestedParameters = collect($pendingRequest->requestedParameters());
         $finalParameters = $this->createFinalParameters($acceptedParameters, $requestedParameters);
 
         return resolve(Request::class)->$method($endpoint, $finalParameters);
@@ -35,7 +35,7 @@ class CreateRequestAction
      * @param Collection $requestedParameters
      * @return array
      */
-    private function createFinalParameters(Collection $acceptedParameters, Collection $requestedParameters): array
+    protected function createFinalParameters(Collection $acceptedParameters, Collection $requestedParameters): array
     {
         return $acceptedParameters->filter()
             ->merge($requestedParameters)

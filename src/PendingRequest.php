@@ -7,11 +7,10 @@ use Aerni\SnipcartApi\Support\Validator;
 
 class PendingRequest
 {
-    public $method;
-    public $endpoint;
-    public $acceptedParameters;
-
-    public $requestedParameters;
+    protected $method;
+    protected $endpoint;
+    protected $acceptedParameters;
+    protected $requestedParameters = [];
 
     public function __construct(string $method, string $endpoint, array $acceptedParameters = [])
     {
@@ -120,7 +119,7 @@ class PendingRequest
 
     /**
      * Specifies how inventory should be tracked for this product.
-     * Can be "Single" or "Variant".
+     * Can be 'Single' or 'Variant.
      * Variant can be used when a product has some dropdown custom fields.
      *
      * @param string $method
@@ -150,7 +149,7 @@ class PendingRequest
 
     /**
      * The number of items in stock.
-     * Will be used when "inventoryManagementMethod" is "Single".
+     * Will be used when 'inventoryManagementMethod' is 'Single'.
      *
      * @param int $stock
      * @return $this
@@ -295,7 +294,7 @@ class PendingRequest
     }
 
     /**
-     * send the request. This is the final method and has to be called at the end of the method chain.
+     * Send the request. This is the final method and has to be called at the end of the method chain.
      *
      * @return array
      * @throws Exceptions\SnipcartApiException
@@ -306,13 +305,53 @@ class PendingRequest
     }
 
     /**
+     * Get the method.
+     *
+     * @return string
+     */
+    public function method(): string
+    {
+        return $this->method;
+    }
+
+    /**
+     * Get the endpoint
+     *
+     * @return string
+     */
+    public function endpoint(): string
+    {
+        return $this->endpoint;
+    }
+
+    /**
+     * Get the accepted parameters.
+     *
+     * @return array
+     */
+    public function acceptedParameters(): array
+    {
+        return $this->acceptedParameters;
+    }
+
+    /**
+     * Get the requested parameters.
+     *
+     * @return array
+     */
+    public function requestedParameters(): array
+    {
+        return $this->requestedParameters;
+    }
+
+    /**
      * Add the requested parameters to an array.
      *
      * @param string $requestedParameter
      * @param int|string|null $value
      * @throws Exceptions\ValidatorException
      */
-    private function setRequestedParameter(string $requestedParameter, $value): void
+    protected function setRequestedParameter(string $requestedParameter, $value): void
     {
         Validator::validateRequestedParameter($requestedParameter, $this->acceptedParameters);
 
