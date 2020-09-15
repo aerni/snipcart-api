@@ -196,10 +196,6 @@ class SnipcartApi
             return $this->getOrders();
         }
 
-        // if ($this->method === 'put') {
-        //     return $this->postProducts($url);
-        // }
-
         throw new MethodChainingException($this->method, 'orders');
     }
 
