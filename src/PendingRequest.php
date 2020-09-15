@@ -2,8 +2,9 @@
 
 namespace Aerni\SnipcartApi;
 
-use Aerni\SnipcartApi\Actions\CreateRequestAction;
+use Illuminate\Support\Collection;
 use Aerni\SnipcartApi\Support\Validator;
+use Aerni\SnipcartApi\Actions\CreateRequestAction;
 
 class PendingRequest
 {
@@ -296,10 +297,10 @@ class PendingRequest
     /**
      * Send the request. This is the final method and has to be called at the end of the method chain.
      *
-     * @return array
+     * @return Collection
      * @throws Exceptions\SnipcartApiException
      */
-    public function send(): array
+    public function send(): Collection
     {
         return resolve(CreateRequestAction::class)->send($this);
     }

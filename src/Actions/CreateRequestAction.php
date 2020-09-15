@@ -13,10 +13,10 @@ class CreateRequestAction
      * Send the pending request and return the response from the Snipcart API.
      *
      * @param PendingRequest $pendingRequest
-     * @return array
+     * @return Collection
      * @throws SnipcartApiException
      */
-    public function send(PendingRequest $pendingRequest): array
+    public function send(PendingRequest $pendingRequest): Collection
     {
         $method = $pendingRequest->method();
         $endpoint = $pendingRequest->endpoint();

@@ -3,6 +3,7 @@
 namespace Aerni\SnipcartApi;
 
 use Aerni\SnipcartApi\Exceptions\SnipcartApiException;
+use Illuminate\Support\Collection;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 
@@ -71,16 +72,18 @@ class Request
      * @param string $method
      * @param string $url
      * @param array $parameters
-     * @return array|mixed
+     * @return Collection
      */
-    protected function send(string $method, string $url, array $parameters = [])
+    protected function send(string $method, string $url, array $parameters = []): Collection
     {
         try {
-            return Http::withHeaders(['Accept' => 'application/json'])
+            $response = Http::withHeaders(['Accept' => 'application/json'])
                 ->withBasicAuth($this->apiSecret . ':', '')
                 ->$method($url, $parameters)
                 ->throw()
                 ->json();
+
+            return collect($response);
         } catch (RequestException $e) {
             $message = $e->response->json()['message'] ?? $e->getMessage();
             $status = $e->response->status() ?? $e->getCode();
