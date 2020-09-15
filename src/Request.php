@@ -3,8 +3,8 @@
 namespace Aerni\SnipcartApi;
 
 use Aerni\SnipcartApi\Exceptions\SnipcartApiException;
-use Illuminate\Support\Collection;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 
 class Request

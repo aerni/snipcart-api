@@ -2,9 +2,9 @@
 
 namespace Aerni\SnipcartApi;
 
-use Illuminate\Support\Collection;
-use Aerni\SnipcartApi\Support\Validator;
 use Aerni\SnipcartApi\Actions\CreateRequestAction;
+use Aerni\SnipcartApi\Support\Validator;
+use Illuminate\Support\Collection;
 
 class PendingRequest
 {
