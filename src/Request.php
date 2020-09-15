@@ -10,11 +10,11 @@ class Request
 {
     protected const API_URL = 'https://app.snipcart.com/api';
 
-    protected $apiKey;
+    protected $apiSecret;
 
-    public function __construct(string $apiKey)
+    public function __construct(string $apiSecret)
     {
-        $this->apiKey = $apiKey;
+        $this->apiSecret = $apiSecret;
     }
 
     /**
@@ -77,7 +77,7 @@ class Request
     {
         try {
             return Http::withHeaders(['Accept' => 'application/json'])
-                ->withBasicAuth($this->apiKey . ':', '')
+                ->withBasicAuth($this->apiSecret . ':', '')
                 ->$method($url, $parameters)
                 ->throw()
                 ->json();

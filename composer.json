@@ -35,7 +35,7 @@
 	"extra": {
 		"laravel": {
 			"providers": [
-				"Aerni\\SnipcartApi\\Providers\\SnipcartApiServiceProvider"
+				"Aerni\\SnipcartApi\\SnipcartApiServiceProvider"
 			]
 		}
 	},
