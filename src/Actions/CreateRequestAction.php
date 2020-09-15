@@ -21,9 +21,10 @@ class CreateRequestAction
         $method = $pendingRequest->method();
         $endpoint = $pendingRequest->endpoint();
 
-        $acceptedParameters = collect($pendingRequest->acceptedParameters());
-        $requestedParameters = collect($pendingRequest->requestedParameters());
-        $finalParameters = $this->createFinalParameters($acceptedParameters, $requestedParameters);
+        $finalParameters = $this->createFinalParameters(
+            $pendingRequest->acceptedParameters(),
+            $pendingRequest->requestedParameters()
+        );
 
         return resolve(Request::class)->$method($endpoint, $finalParameters);
     }
@@ -31,13 +32,13 @@ class CreateRequestAction
     /**
      * Merges the requested and accepted parameters and outputs the final parameters ready for the API call.
      *
-     * @param Collection $acceptedParameters
-     * @param Collection $requestedParameters
+     * @param array $acceptedParameters
+     * @param array $requestedParameters
      * @return array
      */
-    protected function createFinalParameters(Collection $acceptedParameters, Collection $requestedParameters): array
+    protected function createFinalParameters(array $acceptedParameters, array $requestedParameters): array
     {
-        return $acceptedParameters->filter()
+        return collect($acceptedParameters)->filter()
             ->merge($requestedParameters)
             ->toArray();
     }
