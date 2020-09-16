@@ -13,13 +13,13 @@ return [
 
     'live_secret' => env('SNIPCART_LIVE_SECRET'),
     'test_secret' => env('SNIPCART_TEST_SECRET'),
-    
+
     /*
     |--------------------------------------------------------------------------
     | Test Mode
     |--------------------------------------------------------------------------
     |
-    | Set this to "false" to authenticate using the "live_secret".
+    | Set this to 'false' to authenticate using the 'live_secret'.
     | You probably want to do this in production only.
     |
     */
