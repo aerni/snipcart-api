@@ -185,13 +185,13 @@ status(string $status)
 paymentStatus(string $status)
 
 // The invoice number of the order to retrieve.
-invoice(string $invoice)
+invoiceNumber(string $invoiceNumber)
 
 // The name of the person who made the purchase.
-by(string $name)
+placedBy(string $name)
 
 // Returns only the orders that are recurring or not.
-recurring(bool $bool)
+isRecurringOrder(bool $bool)
 
 // The tracking number associated to the order.
 trackingNumber(string $number)

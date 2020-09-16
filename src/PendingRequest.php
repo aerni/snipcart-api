@@ -213,13 +213,13 @@ class PendingRequest
     /**
      * The invoice number of the order to retrieve.
      *
-     * @param string $invoice
+     * @param string $invoiceNumber
      * @return $this
      * @throws Exceptions\ValidatorException
      */
-    public function invoice(string $invoice): self
+    public function invoiceNumber(string $invoiceNumber): self
     {
-        $this->setRequestedParameter('invoiceNumber', $invoice);
+        $this->setRequestedParameter('invoiceNumber', $invoiceNumber);
 
         return $this;
     }
@@ -231,7 +231,7 @@ class PendingRequest
      * @return $this
      * @throws Exceptions\ValidatorException
      */
-    public function by(string $name): self
+    public function placedBy(string $name): self
     {
         $this->setRequestedParameter('placedBy', $name);
 
@@ -245,7 +245,7 @@ class PendingRequest
      * @return $this
      * @throws Exceptions\ValidatorException
      */
-    public function recurring(bool $bool): self
+    public function isRecurringOrder(bool $bool): self
     {
         $this->setRequestedParameter('isRecurringOrder', $bool);
 
