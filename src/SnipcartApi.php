@@ -59,7 +59,9 @@ class SnipcartApi
     /**
      * Get or post Snipcart products.
      *
+     * @param string|null $url
      * @return PendingRequest
+     * @throws MethodChainingException
      */
     public function products(string $url = null): PendingRequest
     {
@@ -118,6 +120,7 @@ class SnipcartApi
      *
      * @param string $id
      * @return PendingRequest
+     * @throws MethodChainingException
      */
     public function product(string $id): PendingRequest
     {
@@ -189,6 +192,7 @@ class SnipcartApi
      * Get Snipcart orders.
      *
      * @return PendingRequest
+     * @throws MethodChainingException
      */
     public function orders(): PendingRequest
     {
@@ -229,6 +233,7 @@ class SnipcartApi
      *
      * @param string $token
      * @return PendingRequest
+     * @throws MethodChainingException
      */
     public function order(string $token): PendingRequest
     {
