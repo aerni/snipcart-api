@@ -1,5 +1,5 @@
 # Laravel Snipcart API
-This package makes it super easy to setup and work with the Snipcart API in your Laravel application.
+This package makes it super easy to work with the Snipcart API in your Laravel application.
 
 ## Installation
 Install the package using Composer.
@@ -45,7 +45,7 @@ return [
     | Test Mode
     |--------------------------------------------------------------------------
     |
-    | Set this to "false" to authenticate using the "live_secret".
+    | Set this to 'false' to authenticate using the 'live_secret'.
     | You probably want to do this in production only.
     |
     */
@@ -55,8 +55,153 @@ return [
 ];
 ```
 
-## Basic Usage
-...
+## Usage Example
+Import the package at the top of your file. All of the following examples use the [Facade](https://laravel.com/docs/master/facades).
+
+```php
+use Aerni\SnipcartApi\Facades\SnipcartApi;
+```
+
+The `SnipcartApi` interface is made up of four parts. From defining the HTTP method to sending the request off to Snipcart.
+
+```php
+// 1. Set the HTTP method to be used for the API request.
+SnipcartApi::get() ...
+
+// 2. Call the main method for the request.
+SnipcartApi::get()->product('product_id') ...
+
+// 3. Add optional parameter methods.
+SnipcartApi::get()->product('product_id')->limit(10)->offset(10) ...
+
+// 4. Send the request off to Snipcart.
+SnipcartApi::get()->product('product_id')->limit(10)->offset(10)->send();
+```
+
+This gets a Snipcart product by ID.
+
+```php
+$product = SnipcartApi::get()->product('product_id')->send();
+```
+
+All responses are wrapped in a [Laravel Collection](https://laravel.com/docs/master/collections) to make working with it super easy.
+
+```php
+$product->get('stock');
+```
+
+## Snipcart API Reference
+
+### Products
+[Snipcart API Reference on Products](https://docs.snipcart.com/v3/api-reference/products)
+
+```php
+// Get all products.
+SnipcartApi::get()->products()->send();
+
+// Post all products found on the URL.
+SnipcartApi::post()->products('fetch_url')->send();
+
+// Get a product by ID.
+SnipcartApi::get()->product('product_id')->send();
+
+// Update a product by ID.
+SnipcartApi::put()->product('product_id')->send();
+
+// Delete a product by ID.
+SnipcartApi::delete()->product('product_id')->send();
+```
+
+### Orders
+[Snipcart API Reference on Orders](https://docs.snipcart.com/v3/api-reference/orders)
+
+```php
+// Get all orders.
+SnipcartApi::get()->orders()->send();
+
+// Get an order by token.
+SnipcartApi::get()->order('order_token')->send();
+
+// Update an order by token.
+SnipcartApi::put()->order('order_token')->send();
+```
+
+## Optional Parameters
+You may pass optional parameters to your requests using the fluent interface provided by this package. A common use case is to set a `limit` and `offset` to your request.
+
+```php
+SnipcartApi::get()->products()->limit(10)->offset(10)->send();
+```
+
+### Parameter Methods API Reference
+Consult the [Snipcart API Reference Documentation](https://docs.snipcart.com/v3/api-reference/introduction) to check which parameters are available to what endpoint.
+
+```php
+// The maximum number of items returned by the request.
+limit(int $limit);
+
+// The number of items that will be skipped.
+offset(int $offset);
+
+// The product ID defined by the user.
+userDefinedId(string $id);
+
+// The product ID defined by the user.
+productId(string $id);
+
+// Filter products to return those that have been bought from specified date.
+from(string $from);
+
+// Filter products to return those that have been bought until specified date.
+to(string $to);
+
+// The URL where we will find product details.
+fetchUrl(string $url);
+
+// Specifies how inventory should be tracked for this product.
+// Can be 'Single' or 'Variant.
+// Variant can be used when a product has some dropdown custom fields.
+inventoryManagementMethod(string $method);
+
+// Allows to set stock per product variant.
+variants(array $variants);
+
+// The number of items in stock.
+// Will be used when 'inventoryManagementMethod' is 'Single'.
+stock(int $stock = null);
+
+// If true a customer will be able to buy the product even if it's out of stock.
+// The stock level might be negative.
+// If false it will be impossible to buy the product.
+allowOutOfStockPurchases(bool $bool)
+
+// A status criteria for your order collection.
+// Possible values: InProgress, Processed, Disputed, Shipped, Delivered, Pending, Cancelled
+status(string $status)
+
+// The order payment status.
+// Possible values: Paid, Deferred, PaidDeferred, ChargedBack, Refunded, Paidout,
+// Failed, Pending, Expired, Cancelled, Open, Authorized.
+paymentStatus(string $status)
+
+// The invoice number of the order to retrieve.
+invoice(string $invoice)
+
+// The name of the person who made the purchase.
+by(string $name)
+
+// Returns only the orders that are recurring or not.
+recurring(bool $bool)
+
+// The tracking number associated to the order.
+trackingNumber(string $number)
+
+// The URL where the customer will be able to track its order.
+trackingUrl(string $url)
+
+// A simple array that can hold any data associated to this order.
+metadata(array $metadata)
+```
 
 ## Tests
 Run the tests like this:
