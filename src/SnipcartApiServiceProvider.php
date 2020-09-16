@@ -3,8 +3,6 @@
 namespace Aerni\SnipcartApi;
 
 use Aerni\SnipcartApi\SnipcartApiConfigRepository as ConfigRepository;
-use Aerni\SnipcartApi\Request;
-use Aerni\SnipcartApi\SnipcartApi;
 use Illuminate\Support\ServiceProvider;
 
 class SnipcartApiServiceProvider extends ServiceProvider
