@@ -349,4 +349,84 @@ class SnipcartApi
 
         return new PendingRequest($method, $endpoint, $acceptedParameters);
     }
+
+    /**
+     * Get Snipcart order refunds.
+     *
+     * @param string $token
+     * @return PendingRequest
+     * @throws MethodChainingException
+     */
+    public function refunds(string $token): PendingRequest
+    {
+        if ($this->method === 'get') {
+            return $this->getRefunds($token);
+        }
+
+        throw new MethodChainingException($this->method, 'refunds');
+    }
+
+    /**
+     * Get Snipcart order refunds.
+     *
+     * @param string $token
+     * @return PendingRequest
+     */
+    protected function getRefunds(string $token): PendingRequest
+    {
+        $method = 'get';
+        $endpoint = '/orders/'.$token.'/refunds/';
+
+        return new PendingRequest($method, $endpoint);
+    }
+
+    /**
+     * Get or post a Snipcart order refund.
+     *
+     * @param string $token
+     * @param string|null $id
+     * @return PendingRequest
+     * @throws MethodChainingException
+     */
+    public function refund(string $token, string $id = null): PendingRequest
+    {
+        if ($this->method === 'get') {
+            return $this->getRefund($token, $id);
+        }
+
+        if ($this->method === 'post') {
+            return $this->postRefund($token);
+        }
+
+        throw new MethodChainingException($this->method, 'refund');
+    }
+
+    /**
+     * Get a Snipcart order refund.
+     *
+     * @param string $token
+     * @param string $id
+     * @return PendingRequest
+     */
+    protected function getRefund(string $token, string $id): PendingRequest
+    {
+        $method = 'get';
+        $endpoint = '/orders/'.$token.'/refunds/'.$id;
+
+        return new PendingRequest($method, $endpoint);
+    }
+
+    /**
+     * Post a Snipcart order refund.
+     *
+     * @param string $token
+     * @return PendingRequest
+     */
+    protected function postRefund(string $token): PendingRequest
+    {
+        $method = 'post';
+        $endpoint = '/orders/'.$token.'/refunds/';
+
+        return new PendingRequest($method, $endpoint);
+    }
 }

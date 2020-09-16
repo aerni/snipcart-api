@@ -105,7 +105,7 @@ SnipcartApi::post()->products('fetch_url')->send();
 // Get a product by ID.
 SnipcartApi::get()->product('product_id')->send();
 
-// Update a product by ID. This requires parameter methods.
+// Update a product by ID. This requires additional parameter methods.
 SnipcartApi::put()->product('product_id')->send();
 
 // Delete a product by ID.
@@ -122,7 +122,7 @@ SnipcartApi::get()->orders()->send();
 // Get an order by token.
 SnipcartApi::get()->order('order_token')->send();
 
-// Update an order by token. This requires parameter methods.
+// Update an order by token. This requires additional parameter methods.
 SnipcartApi::put()->order('order_token')->send();
 ```
 
@@ -133,8 +133,22 @@ SnipcartApi::put()->order('order_token')->send();
 // Get all notifications of an order.
 SnipcartApi::get()->notifications('order_token')->send();
 
-// Post a notification to an order. This requires parameter methods.
+// Post a notification to an order. This requires additional parameter methods.
 SnipcartApi::post()->notification('order_token')->send();
+```
+
+### Refunds
+[Snipcart API Reference on Refunds](https://docs.snipcart.com/v3/api-reference/refunds)
+
+```php
+// Get all refunds of an order.
+SnipcartApi::get()->refunds('order_token')->send();
+
+// Get a specific refund from an order.
+SnipcartApi::get()->refund('order_token', 'refund_id')->send();
+
+// Post a refund to an order. This requires additional parameter methods.
+SnipcartApi::post()->refund('order_token')->send();
 ```
 
 ## Parameter Methods
@@ -224,6 +238,12 @@ deliveryMethod(string $method)
 // The message of the notification.
 // Possible values: Email, None
 message(string $message)
+
+// The amount of the refund.
+amount(string $amount)
+
+// The reason for the refund.
+comment(string $comment)
 ```
 
 ## Tests

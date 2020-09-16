@@ -340,6 +340,34 @@ class PendingRequest
     }
 
     /**
+     * The amount of the refund.
+     *
+     * @param string $amount
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function amount(string $amount): self
+    {
+        $this->setRequestedParameter('amount', $amount);
+
+        return $this;
+    }
+
+    /**
+     * The reason for the refund.
+     *
+     * @param string $comment
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function comment(string $comment): self
+    {
+        $this->setRequestedParameter('comment', $comment);
+
+        return $this;
+    }
+
+    /**
      * Send the request. This is the final method and has to be called at the end of the method chain.
      *
      * @return Collection
