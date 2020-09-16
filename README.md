@@ -105,7 +105,7 @@ SnipcartApi::post()->products('fetch_url')->send();
 // Get a product by ID.
 SnipcartApi::get()->product('product_id')->send();
 
-// Update a product by ID.
+// Update a product by ID. This requires parameter methods.
 SnipcartApi::put()->product('product_id')->send();
 
 // Delete a product by ID.
@@ -122,12 +122,23 @@ SnipcartApi::get()->orders()->send();
 // Get an order by token.
 SnipcartApi::get()->order('order_token')->send();
 
-// Update an order by token.
+// Update an order by token. This requires parameter methods.
 SnipcartApi::put()->order('order_token')->send();
 ```
 
-## Optional Parameters
-You may pass optional parameters to your requests using the fluent interface provided by this package. A common use case is to set a `limit` and `offset` to your request.
+### Notifications
+[Snipcart API Reference on Notifications](https://docs.snipcart.com/v3/api-reference/notifications)
+
+```php
+// Get all notifications of an order.
+SnipcartApi::get()->notifications('order_token')->send();
+
+// Post a notification to an order. This requires parameter methods.
+SnipcartApi::post()->notification('order_token')->send();
+```
+
+## Parameter Methods
+Pass required or optional parameters to your requests using the fluent interface provided by this package. A common use case is to set a `limit` and `offset` to your request.
 
 ```php
 SnipcartApi::get()->products()->limit(10)->offset(10)->send();
@@ -201,6 +212,18 @@ trackingUrl(string $url)
 
 // A simple array that can hold any data associated to this order.
 metadata(array $metadata)
+
+// The type of notification.
+// Possible values: Comment, OrderStatusChanged, OrderShipped, TrackingNumber, Invoice
+type(string $type)
+
+// The delivery method of the notification.
+// Possible values: Email, None
+deliveryMethod(string $method)
+
+// The message of the notification.
+// Possible values: Email, None
+message(string $message)
 ```
 
 ## Tests

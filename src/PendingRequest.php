@@ -295,6 +295,51 @@ class PendingRequest
     }
 
     /**
+     * The type of notification.
+     * Possible values: Comment, OrderStatusChanged, OrderShipped, TrackingNumber, Invoice
+     *
+     * @param string $type
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function type(string $type): self
+    {
+        $this->setRequestedParameter('type', $type);
+
+        return $this;
+    }
+
+    /**
+     * The delivery method of the notification.
+     * Possible values: Email, None
+     *
+     * @param string $method
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function deliveryMethod(string $method): self
+    {
+        $this->setRequestedParameter('deliveryMethod', $method);
+
+        return $this;
+    }
+
+    /**
+     * The message of the notification.
+     * Possible values: Email, None
+     *
+     * @param string $message
+     * @return $this
+     * @throws Exceptions\ValidatorException
+     */
+    public function message(string $message): self
+    {
+        $this->setRequestedParameter('message', $message);
+
+        return $this;
+    }
+
+    /**
      * Send the request. This is the final method and has to be called at the end of the method chain.
      *
      * @return Collection

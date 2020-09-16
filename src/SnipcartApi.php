@@ -283,4 +283,70 @@ class SnipcartApi
 
         return new PendingRequest($method, $endpoint, $acceptedParameters);
     }
+
+    /**
+     * Get Snipcart order notifications.
+     *
+     * @param string $token
+     * @return PendingRequest
+     * @throws MethodChainingException
+     */
+    public function notifications(string $token): PendingRequest
+    {
+        if ($this->method === 'get') {
+            return $this->getNotifications($token);
+        }
+
+        throw new MethodChainingException($this->method, 'notifications');
+    }
+
+    /**
+     * Get Snipcart order notifications.
+     *
+     * @param string $token
+     * @return PendingRequest
+     */
+    protected function getNotifications(string $token): PendingRequest
+    {
+        $method = 'get';
+        $endpoint = '/orders/'.$token.'/notifications/';
+
+        return new PendingRequest($method, $endpoint);
+    }
+
+    /**
+     * Post a Snipcart order notification.
+     *
+     * @param string $token
+     * @return PendingRequest
+     * @throws MethodChainingException
+     */
+    public function notification(string $token): PendingRequest
+    {
+        if ($this->method === 'post') {
+            return $this->postNotification($token);
+        }
+
+        throw new MethodChainingException($this->method, 'notification');
+    }
+
+    /**
+     * Post a Snipcart order notification.
+     *
+     * @param string $token
+     * @return PendingRequest
+     */
+    protected function postNotification(string $token): PendingRequest
+    {
+        $method = 'post';
+        $endpoint = '/orders/'.$token.'/notifications/';
+
+        $acceptedParameters = [
+            'type' => null,
+            'deliveryMethod' => null,
+            'message' => null,
+        ];
+
+        return new PendingRequest($method, $endpoint, $acceptedParameters);
+    }
 }
