@@ -1,7 +1,9 @@
 .DS_Store
 .idea
 .phpunit.result.cache
+.phpunit.cache
 .php_cs.cache
+.php-cs-fixer.cache
 coverage
 node_modules
 package-lock.json
